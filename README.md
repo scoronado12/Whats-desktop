@@ -15,7 +15,10 @@ not be ontop of accepting anything sent to me here.
 
 ==Priorities==
 
+
 I will continue reading the electron documentation and fix any issues
 that have been poping out in my terminal
 
-Notifications - It's in the docs somewhere
+Tray icon - have something in the system tray so to tell the user that this is running
+
+Notifications - It's in the Electron docs somewhere
