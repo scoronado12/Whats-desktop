@@ -1,8 +1,11 @@
 const electron = require('electron')
 // Module to control application life.
-const app = electron.app
+app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
+
+
+
 
 const path = require('path')
 const url = require('url')
@@ -57,3 +60,26 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+
+
+// Tray Icon. I am reading the docs to get this pointed to ./docs/standard.ico without puking
+// The rest is just for me to play without
+
+/*const {Menu, Tray} = require('electron')
+let tray = null
+app.on('ready', () => {
+
+  //var iconPath = path.join(icons,'standard.ico')
+  tray = new Tray(iconPath) //standard image
+  const contextMenu = Menu.buildFromTemplate([
+    {label: 'Item1', type: 'radio'},
+    {label: 'Item2', type: 'radio'},
+    {label: 'Item3', type: 'radio', checked: true},
+    {label: 'Item4', type: 'radio'}
+  ])
+  tray.setToolTip('WhatsDesktop')
+  tray.setContextMenu(contextMenu)
+})*/
+
+// end Tray Icon
