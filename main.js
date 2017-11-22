@@ -15,12 +15,11 @@ function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 1024, height: 768})
 
-  // and load the index.html of the app.
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }))
+  // and load the WhatsApp Website
+
+mainWindow.loadURL('https://web.whatsapp.com')
+
+
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
