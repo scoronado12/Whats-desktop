@@ -1,6 +1,6 @@
 {
   "name": "Whats-desktop",
-  "version": "1.0.0",
+  "version": "1.0.0-git",
   "description": "A What's App Desktop Client",
   "main": "main.js",
   "scripts": {
