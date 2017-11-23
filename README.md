@@ -5,13 +5,13 @@ guarantee that I will be on top of this once I get this to fulfill all of my nee
 
 ==Building==
 
-On my Arch/Antergos system, I have simply cloned repository, cd'ed into
+On my Arch/Antergos GNU/Linux system, I have simply cloned the repository, cd'ed into
 it, and run npm install && npm start
 
 ==Contributing==
 
 Again, I can not guarantee that I will be on top of this and so I may
-not be ontop of accepting anything sent to me here.
+not be on top of accepting anything sent to me here.
 
 ==Priorities==
 
