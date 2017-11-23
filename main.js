@@ -5,8 +5,6 @@ app = electron.app
 const BrowserWindow = electron.BrowserWindow
 
 
-
-
 const path = require('path')
 const url = require('url')
 
@@ -14,13 +12,12 @@ const url = require('url')
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-function createWindow () {
+function createMainWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 1024, height: 768})
 
   // and load the WhatsApp Website
-
-mainWindow.loadURL('https://web.whatsapp.com')
+  mainWindow.loadURL('https://web.whatsapp.com')
 
 
 
@@ -33,13 +30,17 @@ mainWindow.loadURL('https://web.whatsapp.com')
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null
+
+
   })
 }
+
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', createMainWindow)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
@@ -54,7 +55,7 @@ app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
-    createWindow()
+    createMainWindow()
   }
 })
 
@@ -63,11 +64,11 @@ app.on('activate', function () {
 
 
 
-// Tray Icon. I am reading the docs to get this pointed to ./docs/standard.ico without puking
-// The rest is just for me to play without
+// Tray Icon. I am reading the docs to get this pointed to ./icons/standard.ico without puking
 
-/*const {Menu, Tray} = require('electron')
-let tray = null
+
+const {Menu, Tray} = require('electron')
+/*let tray = null
 app.on('ready', () => {
 
   //var iconPath = path.join(icons,'standard.ico')
@@ -80,6 +81,84 @@ app.on('ready', () => {
   ])
   tray.setToolTip('WhatsDesktop')
   tray.setContextMenu(contextMenu)
-})*/
+}) */
 
 // end Tray Icon
+
+
+//Menus
+
+new Menu()
+
+const template = [
+  {
+    label: 'View',
+    submenu: [
+      {role: 'forcereload'},
+      {role: 'toggledevtools'},
+      {type: 'separator'},
+      {role: 'togglefullscreen'}
+    ]
+  },
+  {
+    role: 'window',
+    submenu: [
+      {role: 'minimize'},
+      {role: 'close'}
+    ]
+  },
+  {
+    role: 'help',
+    submenu: [
+      {
+        label: 'Github Page',
+        click () { require('electron').shell.openExternal('https://github.com/scoronado12/Whats-desktop') }
+      },
+      {
+        label: 'Report Issues',
+        click () { require('electron').shell.openExternal('https://github.com/scoronado12/Whats-desktop/issues') }
+      },
+
+    ]
+  }
+]
+
+if (process.platform === 'darwin') {
+  template.unshift({
+    label: app.getName(),
+    submenu: [
+      {role: 'about'},
+      {type: 'separator'},
+      {role: 'services', submenu: []},
+      {type: 'separator'},
+      {role: 'hide'},
+      {role: 'hideothers'},
+      {role: 'unhide'},
+      {type: 'separator'},
+      {role: 'quit'}
+    ]
+  })
+
+  // Edit menu
+  template[1].submenu.push(
+    {type: 'separator'},
+    {
+      label: 'Speech',
+      submenu: [
+        {role: 'startspeaking'},
+        {role: 'stopspeaking'}
+      ]
+    }
+  )
+
+  // Window menu
+  template[3].submenu = [
+    {role: 'close'},
+    {role: 'minimize'},
+    {type: 'separator'},
+    {role: 'front'}
+  ]
+}
+
+const menu = Menu.buildFromTemplate(template)
+Menu.setApplicationMenu(menu)
