@@ -11,6 +11,7 @@ const url = require('url')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected....
 let mainWindow
+let smallerWindow
 
 function createMainWindow () {
   // Create the browser window.
@@ -33,6 +34,12 @@ function createMainWindow () {
 
 
   })
+}
+
+function createSmallerWindow(string file){
+  smallerWindow = new BrowserWindow({w: 800, h: 600})
+  smallerWindow.loadURL(file)
+
 }
 
 
@@ -118,6 +125,10 @@ const template = [
         label: 'Report Issues',
         click () { require('electron').shell.openExternal('https://github.com/scoronado12/Whats-desktop/issues') }
       },
+      {
+        label: 'About',
+        click () { createSmallerWindow('about.html')}
+      }
 
     ]
   }
@@ -162,3 +173,6 @@ if (process.platform === 'darwin') {
 
 const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
+
+
+
