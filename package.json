@@ -15,6 +15,6 @@
   "author": "Stefano Coronado",
   "license": "GPL-3.0",
   "devDependencies": {
-    "electron": "~1.7.8"
+    "electron": "~1.8.2"
   }
 }
